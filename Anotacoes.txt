@@ -1,0 +1,30 @@
+1 - Bootstrap
+ - No nest js se trata de um facilitador parecido com o principio do bootstrap do frontend que e facilitar a construcao de um projeto
+ - A funcao bootstrap inicial e responsavel de iniciar e carregar o modulo principal
+ - Localizada no arquivo de main.ts
+ - O nome da funcao e bootstrap pode ser nomeada com outro nome mas o padrao e deixar o bootstrap
+ - Essa funcao e onde a variavel de app sera configurada e instanciada setando assim o modulo principal e a porta que estara rodando
+ - Resumindo essa funcao e responsavel pelas configuracoes inicias de todo o projeto
+
+2- Decorators
+ - Servem para modificar uma classe, objeto ou uma funcao em tempo de execucao;
+ - Definidos sempre com @NomeDecorator
+ - O Decorator vem sempre antes da funcao ou classe ou objeto alvo da mudanca
+ - Os Decorators podem ser encadeados ou sem um em cima do outro
+
+3- Module
+ - Conceito de Module inspirado no module do angular 2+
+ - A ideia do Module e a divisao da aplicacao em secoes separadas para cada funcionalidade
+ - Dentro do module contem os imports de outros modulos, controllers e services.
+ - O Module funciona como um agrupador de recursos e podem ser exportatos
+
+4- Controllers
+ - O Controller funciona como um garcom em um restaurante, ou seja o controller e responsavel em atender e gerenciar as solicitacoes do client
+ - Nao e uma boa pratica colocar todas as funcionalidades dentro do controller, o correto e somente fazer o redirecionamento da solicitacao
+ - Dentro do decorator do controller e aonde ele indica a qual rota ele pertence ou serja @Controller('usuarios') logo todas as rotas dentro deste controller recebem o prefixo de /usuarios
+
+5- Services
+ - O padrao do uso do services e ser chamado por uma rota definida em um controller
+ - Diferente do controller o service tem a funcao semelhante a de um cozinheiro em um restaurante, ou seja fica responsavel em preparar os dados e solicitacoes por exemplo regras de negocio, acesso ao banco de dados, etc...
+ - Utiliza o decorator @Injectable que deixa o service apto a ser injetado no controller, ele e injetado por padrao no constructor do controller da seguinte maneira 'private readonly meuService: MeuService'
+ - ao ser injetado o service possibilita a chamar as funcoes dentro dos metodos do controller utilizando 'this.meuService.minhaFuncao()'
