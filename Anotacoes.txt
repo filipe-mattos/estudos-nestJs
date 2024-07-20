@@ -57,3 +57,9 @@
  - Para fazer a validacao podemos utilizar a biblioteca class-validator
  - Para Alterar os dados podemos utilizar a biblioteca class-transformer
  - E preciso inicializar as bibliotecas na funcao bootstrap
+
+ --------------------------- Banco De Dados com Prisma no nestJs
+  - ORM faz a camada de conexao da aplicacao entre as classes e objetos com o banco de Dados da aplicacao
+  - Para instalar o prisma para usar o npm i -D prisma, ele sera instalado como dependencia de desenvolvimento
+  - Para iniciar a aplicacao com prisma devemos utilizar o comando npx prisma init para criar um banco de dados do zero
+

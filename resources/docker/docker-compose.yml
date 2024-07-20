@@ -1,0 +1,6 @@
+services:
+  estudos-nestJs-postgresql:
+    extends:
+      file: postgresql.yml
+      service: estudos-nestJs-postgresql
+    container_name: estudos-nestJs-postgresql
