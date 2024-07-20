@@ -11,6 +11,7 @@
  - Definidos sempre com @NomeDecorator
  - O Decorator vem sempre antes da funcao ou classe ou objeto alvo da mudanca
  - Os Decorators podem ser encadeados ou sem um em cima do outro
+ - Todo decorator e uma funcao
 
 3- Module
  - Conceito de Module inspirado no module do angular 2+
@@ -28,3 +29,23 @@
  - Diferente do controller o service tem a funcao semelhante a de um cozinheiro em um restaurante, ou seja fica responsavel em preparar os dados e solicitacoes por exemplo regras de negocio, acesso ao banco de dados, etc...
  - Utiliza o decorator @Injectable que deixa o service apto a ser injetado no controller, ele e injetado por padrao no constructor do controller da seguinte maneira 'private readonly meuService: MeuService'
  - ao ser injetado o service possibilita a chamar as funcoes dentro dos metodos do controller utilizando 'this.meuService.minhaFuncao()'
+
+-------------------------- API CRUD Rest
+ - Ao Criar um novo module e consequentemente um controller e preciso importar o mesmo no app.module
+
+1- Create
+ - Utiliza o decorator @Post() para definir que a rota sera um post (Create)
+ - Utiliza o @Body como parametro da funcao para pegar os dados enviados da request '@Body body'
+
+2- Read
+ - Utiliza o decorator @Get() para definir que a rota sera um get (Read)
+ - Quando o get e utilizado para buscar apenas um registro utilizase o :id dentro do decoretor de get @Get(':id') e para pegar esse id basta utilizar o decorator @Param() para pegar todos os parametros da rota
+
+3- Update
+ - Utiliza o decorator @Put() ou @Patch() para definir que a rota sera um put ou patch respectivamente (Update)
+ - Assim como o post pega os dados do body utilizando o mesmo decorator @Body()
+ - Put atualiza todos os dados do modelo mesmo aqueles que nao vierao no body da request
+ - Patch atualiza somente as propiedades passadas dentro do body da request
+
+4- Delete
+ - Utiliza o decorator @Delete() para definir que a rota sera um delete (Delete)
