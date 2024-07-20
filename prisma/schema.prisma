@@ -12,8 +12,8 @@ model User {
   name      String   @db.VarChar
   email     String   @db.VarChar
   password  String   @db.VarChar
-  createdAt DateTime @default(now()) @db.Timestamp(6)
-  updatedAt DateTime @default(now()) @db.Timestamp(6)
+  createdat DateTime @default(now()) @db.Timestamp(6)
+  updatedat DateTime @default(now()) @db.Timestamp(6)
 
   @@map("users")
 }
