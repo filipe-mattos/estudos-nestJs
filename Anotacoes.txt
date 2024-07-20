@@ -49,3 +49,11 @@
 
 4- Delete
  - Utiliza o decorator @Delete() para definir que a rota sera um delete (Delete)
+ - recebe o identificador para deletar atravez da url utilizando assim o decorator @Param
+
+--------------------------- DTO - (DATA TRANSFER OBJECT)
+ - E um padrao de projeto usado para transferir dados em uma aplicacao de um ambiente para outro
+ - Utilizar um DTO fica simples a validacao dos dados e transformacoes antes de inserirmos no banco de dados
+ - Para fazer a validacao podemos utilizar a biblioteca class-validator
+ - Para Alterar os dados podemos utilizar a biblioteca class-transformer
+ - E preciso inicializar as bibliotecas na funcao bootstrap
