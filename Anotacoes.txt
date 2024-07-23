@@ -63,3 +63,20 @@
   - Para instalar o prisma para usar o npm i -D prisma, ele sera instalado como dependencia de desenvolvimento
   - Para iniciar a aplicacao com prisma devemos utilizar o comando npx prisma init para criar um banco de dados do zero
 
+----------------------------- Connceitos fundamentais 2
+1- Pipes
+ - Sao classes com decorators @injectable()
+ - Deve implementar a interface PipeTransform
+ - Pipes normalmente sao usados para transformar ou validar dados passados por ele
+ 1.2 - Built-in Pipes
+   - Pipes que ja estao na aplicacao nest por padrao
+   - ValidationPipe, ParsesPipe, DefaultValuePipe, ParseFilePipe
+
+2- Interceptors
+ - Sao classes com o decorator @Injectable()
+ - Deve implementar a interface NestInterceptor
+ - Utiliza a tecnica AOP (Aspect Oriented Programing)
+ - Essa tecnica possibilita adicionarmos alguma logica antes ou depois da execucao de metodos
+ - Pode ser usado em um controller, em um metodo ou ate mesmo de forma global na aplicacao
+ - Para utilizar usamos o decorator @UseInterceptors() ou o metodo useGlobalInterceptor no bootstrap da aplicacao
+ 
