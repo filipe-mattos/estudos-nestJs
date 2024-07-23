@@ -1,4 +1,4 @@
-import { IsEmail, IsString, IsStrongPassword } from 'class-validator';
+import { IsEmail, IsOptional, IsString, IsStrongPassword } from 'class-validator';
 
 
 //Aplicando ao DTO as validacoes do class validator
@@ -15,6 +15,9 @@ export class CreateUserDto {
     minUppercase: 1,
   })
   password: string;
+
+  @IsOptional()
+  birthAt: string;
 
 
 }

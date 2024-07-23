@@ -12,6 +12,7 @@ model User {
   name      String   @db.VarChar
   email     String   @db.VarChar
   password  String   @db.VarChar
+  birthAt   DateTime? @db.Date //Definindo a coluna opcional com ?
   createdat DateTime @default(now()) @db.Timestamp(6)
   updatedat DateTime @default(now()) @db.Timestamp(6)
 
