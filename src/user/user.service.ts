@@ -16,4 +16,18 @@ export class UserService {
       }
     })
   }
+
+  async list() {
+    return this.prismaService.user.findMany();// Utilizando o find many para trazer todos os registros da tabela
+  }
+
+  async findById(id: number) {
+    return this.prismaService.user.findUnique({ //Utilizando o findUnique para trazer somente 1 registro
+      //O findUnique so faz consulta pelas chaves primarias da tabela - possui o melhor desempenho
+      where: {
+        id: id
+      }
+    })
+  }
+
 }
