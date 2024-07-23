@@ -82,7 +82,23 @@
 
 3- Middlewares
  - No nest os middlewares sao funcoes que sao chamandas antes do manipulador de rotas
- - Essa funcao podem ser declaradas em uma classe com o decorator @Injectable() e implementando a interface NestMiddleware
+ - Essa funcao pode ser declaradas em uma classe com o decorator @Injectable() e implementando a interface NestMiddleware
  - Essas funcoes tem acesso ao request, response e ao next() para chamar o proximo middler ou finalizar o manipulador de rota
  - Segue o design pattern "Chain of Responsibility"
  - Podem executar qualquer tipo de codigo, sempre vai ser http
+
+4- Guards
+ - Essa funcao podde ser declarada em uma classe com o decorator @Injectable() e implementando a interface CanActivate
+ - Guards tem apenas uma unica responsabilidade que e determinar se uma request pode ser tratada pelo manipulador de rota ou nao
+ - Esse recurso e util para criar rotas protegidas com autenticacao via token ou por permissao adequadas
+
+5 - Exceptions
+ - O nest js possui uma camada de captura de exceptions que e responsalvel em transformalas em mensagens mais amigaveis
+ - Para criar uma exception personalizada devemos criar uma classe que vai herdar a classe HttpException
+ - Pode ser criado filtros de excecoes criando uma classe e utilizando o decorator @Catch(T) onde T e a exception que esta sendo filtrada
+ - Essa classe deve implementar a interface ExceptionFilter
+ - Uma exceptionFilter tem acesso ao host que fornece o contexto de execucao com o request e o response
+
+6 - Param Decorators
+ - O nest possui um conjunto de decorators para os parametros de toda a manipulacao Http
+ - Pode ser criado Decorators Customisados para a aplicacao
