@@ -79,4 +79,10 @@
  - Essa tecnica possibilita adicionarmos alguma logica antes ou depois da execucao de metodos
  - Pode ser usado em um controller, em um metodo ou ate mesmo de forma global na aplicacao
  - Para utilizar usamos o decorator @UseInterceptors() ou o metodo useGlobalInterceptor no bootstrap da aplicacao
- 
+
+3- Middlewares
+ - No nest os middlewares sao funcoes que sao chamandas antes do manipulador de rotas
+ - Essa funcao podem ser declaradas em uma classe com o decorator @Injectable() e implementando a interface NestMiddleware
+ - Essas funcoes tem acesso ao request, response e ao next() para chamar o proximo middler ou finalizar o manipulador de rota
+ - Segue o design pattern "Chain of Responsibility"
+ - Podem executar qualquer tipo de codigo, sempre vai ser http

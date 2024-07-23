@@ -24,6 +24,7 @@ export class UserService {
   }
 
   async findById(id: number) {
+    await this.exists(id)
     return this.prismaService.user.findUnique({ //Utilizando o findUnique para trazer somente 1 registro
       //O findUnique so faz consulta pelas chaves primarias da tabela - possui o melhor desempenho
       where: {
@@ -64,7 +65,7 @@ export class UserService {
   }
 
   async exists(id: number) {
-    if(!(await this.findById(id))){
+    if(!(await this.prismaService.user.count({where: {id: id}}))){
       throw new NotFoundException("Not found");
     }
   }
