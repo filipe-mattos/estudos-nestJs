@@ -12,10 +12,10 @@ export class UserService {
   async create(userDto: CreateUserDto) {
     return this.prismaService.user.create({
       data: userDto, //Dados que quero salvar no banco
-      select: { //Ao inserir o create vai trazer os seguintes dados
-        id: true,
-        name: true
-      }
+      // select: { //Ao inserir o create vai trazer os seguintes dados
+      //   id: true,
+      //   name: true
+      // }
     })
   }
 
