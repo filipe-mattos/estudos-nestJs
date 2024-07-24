@@ -16,7 +16,7 @@ export class AuthService {
     private readonly  userService: UserService) {}
 
   //Utilizando o type user utilizando direto da tabela do banco onde o prisma gerou esse type automaticamente
-  async createToken(user: User) {
+  createToken(user: User) {
     //Configurando a assinatura do token e o que eu vou retornar nele
     return {
       accessToken: this.jwtService.sign({
@@ -31,7 +31,7 @@ export class AuthService {
     }
   }
 
-  async checkToken(token: string) {
+  checkToken(token: string) {
     try {
       return this.jwtService.verify(token, {
         audience: this.audience //Verificando se o token possui a audience pre definida
@@ -81,5 +81,14 @@ export class AuthService {
   async register(data: AuthRegisterDto) {
     const user = await this.userService.create(data);
     return this.createToken(user);
+  }
+
+  isValidToken(token: string){
+    try {
+      this.checkToken(token)
+      return true
+    }catch{
+      return false
+    }
   }
 }

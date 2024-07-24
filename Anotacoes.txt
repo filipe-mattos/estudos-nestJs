@@ -119,5 +119,9 @@
     - iat -> abreviacao da expressao issued at, serve para identificar o momento da criacao do token e assim saber a sua idade, ela e opcional
     - jti -> abreviacao da expressao JWT ID serve para identificar de forma unica um token, util para aplicacoes que tenham emissores de tokens diversos evitando a repeticao, ela e opcional
   - Signature - > E um base64 do resultado da criptografia com o algoritimo escolhido e identificado no header
+  - O token http deve ser passado diretamente pelo http atravez do header
+  - Utiliza o protocolo autorizacao do portador - (bearer token) como parametro do Authorization
+  - O nest js tem um pacote oficial para lidar com jwt - npm i @nestjs/jwt
 
- - O nest js tem um pacote oficial para lidar com jwt - npm i @nestjs/jwt
+2 - Jwt Guard
+ - Os guards tem apenas um unico objetivo - Dizer se pode ou nao executar a rota baseado na autenticacao do token
