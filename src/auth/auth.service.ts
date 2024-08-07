@@ -71,7 +71,7 @@ export class AuthService {
     return true //TO DO Enviar email
   }
 
-  async resetPassword(newPassword: string, token: string) {
+  async resetPassword(newPassword: string) {
     //TODO: validar o token
     const id = 0 //TODO: resgatar o id do usuario do token
     const user = await this.prismaService.user.update({where: {id}, data: {password: newPassword}});

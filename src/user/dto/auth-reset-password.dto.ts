@@ -6,7 +6,4 @@ export class AuthResetPasswordDto {
     minUppercase: 1
   })
   password: string;
-
-  @IsJWT()
-  token: string;
 }

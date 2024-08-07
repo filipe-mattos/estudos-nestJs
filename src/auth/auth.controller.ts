@@ -6,6 +6,7 @@ import { AuthResetPasswordDto } from '../user/dto/auth-reset-password.dto';
 import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import { AuthGuard } from '../guards/auth.guard';
+import { User } from '../decorators/user.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -26,14 +27,15 @@ export class AuthController {
     return this.authService.forgotPassword(email)
   }
 
+  @UseGuards(AuthGuard)
   @Post('resetPassword')
-  async resetPassword(@Body() {password, token}: AuthResetPasswordDto){
-    return this.authService.resetPassword(password, token)
+  async resetPassword(@Body() {password}: AuthResetPasswordDto){
+    return this.authService.resetPassword(password)
   }
 
   @UseGuards(AuthGuard)
   @Post()
-  async auth(@Req() request){
-    return {auth: 'ok', data: request.tokenPayload};
+  async auth(@User() user){
+    return {user: user};
   }
 }
