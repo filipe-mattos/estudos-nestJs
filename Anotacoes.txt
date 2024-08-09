@@ -125,3 +125,13 @@
 
 2 - Jwt Guard
  - Os guards tem apenas um unico objetivo - Dizer se pode ou nao executar a rota baseado na autenticacao do token
+
+3 - Autorização RBAC - (Role-based access control)
+ - Controle de acesso baseado em funcao
+ - serve para conceder acesso a um recurso da api apenas se o usuario possuir a permissao/funcao para acessar os dados
+
+4 - Circular Dependency error - (loop de denpendencias)
+ - Para resolver basta usar a funcao forwardRef() para nao importar a dependencia que esta em loop e sim passar a referencia
+ - Aplicada onde o servico e injetado
+ - Uma melhor forma de resolver e aplicar essa funcao nos modulos utilizando a funcao forwardRef(() => NomeModule) dentro do import do modulo
+ - Precisa ser utilizada nos dois modulos que estao em loop

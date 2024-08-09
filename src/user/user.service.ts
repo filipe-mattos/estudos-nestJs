@@ -33,24 +33,24 @@ export class UserService {
     })
   }
 
-  async update({email, name, birthAt, password}: UpdatePutUserDto, id: number) {
+  async update({email, name, birthAt, password, role}: UpdatePutUserDto, id: number) {
 
     await this.exists(id);
 
     return this.prismaService.user.update(
-      {data: {email, name, birthAt:birthAt ? new Date(birthAt): null, password},
+      {data: {email, name, birthAt:birthAt ? new Date(birthAt): null, password, role},
         where: {
           id: id
         }
       })
   }
 
-  async updatePartial({email, name, birthAt, password}: UpdatePatchUserDto, id: number) {
+  async updatePartial({email, name, birthAt, password, role}: UpdatePatchUserDto, id: number) {
 
     await this.exists(id);
 
     return this.prismaService.user.update(
-      {data: {email, name, birthAt:birthAt ? new Date(birthAt): null, password},
+      {data: {email, name, birthAt:birthAt ? new Date(birthAt): null, password, role},
         where: {
           id: id
         }
