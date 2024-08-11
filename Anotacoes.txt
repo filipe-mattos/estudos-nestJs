@@ -135,3 +135,6 @@
  - Aplicada onde o servico e injetado
  - Uma melhor forma de resolver e aplicar essa funcao nos modulos utilizando a funcao forwardRef(() => NomeModule) dentro do import do modulo
  - Precisa ser utilizada nos dois modulos que estao em loop
+
+5 - Aplicando Criptografia na senha
+ - Fazer a instalacao do pacote bcrypt e instalar o pacote dos types do bycript com o comando npm i -D @types/bcrypt

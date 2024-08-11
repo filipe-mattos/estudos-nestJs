@@ -4,7 +4,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { User } from '@prisma/client';
 import { AuthRegisterDto } from '../user/dto/auth-register.dto';
 import { UserService } from '../user/user.service';
-
+import * as bcrypt from 'bcrypt';
 @Injectable()
 export class AuthService {
   private issuer = 'Login';
@@ -43,14 +43,18 @@ export class AuthService {
   }
 
   async login(email: string, password: string) {
-   const user = await this.prismaService.user.findFirst({
+
+    const user = await this.prismaService.user.findFirst({
       where: {
-        email,
-        password
+        email
       }
     })
 
     if (!user) {
+      throw new UnauthorizedException("Email ou senha incorretos")
+    }
+
+    if(!await bcrypt.compare(password, user.password)){//Utilizando o compare para verificar se as hashs sao as mesmas
       throw new UnauthorizedException("Email ou senha incorretos")
     }
 
@@ -91,4 +95,6 @@ export class AuthService {
       return false
     }
   }
+
+
 }

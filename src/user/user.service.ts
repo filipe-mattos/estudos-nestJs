@@ -3,13 +3,14 @@ import { CreateUserDto } from './dto/create-user-dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { UpdatePatchUserDto } from './dto/update-patch-user-dto';
 import { UpdatePutUserDto } from './dto/update-put-user-dto';
-
+import * as bcrypt from 'bcrypt';
 @Injectable()
 export class UserService {
 
   constructor(private readonly prismaService: PrismaService) {}
 
   async create(userDto: CreateUserDto) {
+    userDto.password = await bcrypt.hash(userDto.password, await bcrypt.genSalt()); // criptografando a senha do usuario e aplicando um salt
     return this.prismaService.user.create({
       data: userDto, //Dados que quero salvar no banco
       // select: { //Ao inserir o create vai trazer os seguintes dados
@@ -36,7 +37,7 @@ export class UserService {
   async update({email, name, birthAt, password, role}: UpdatePutUserDto, id: number) {
 
     await this.exists(id);
-
+    password = await bcrypt.hash(password, await bcrypt.genSalt())
     return this.prismaService.user.update(
       {data: {email, name, birthAt:birthAt ? new Date(birthAt): null, password, role},
         where: {
@@ -48,7 +49,7 @@ export class UserService {
   async updatePartial({email, name, birthAt, password, role}: UpdatePatchUserDto, id: number) {
 
     await this.exists(id);
-
+    password = await bcrypt.hash(password, await bcrypt.genSalt())
     return this.prismaService.user.update(
       {data: {email, name, birthAt:birthAt ? new Date(birthAt): null, password, role},
         where: {
