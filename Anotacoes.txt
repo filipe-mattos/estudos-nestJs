@@ -145,3 +145,10 @@
  - Basta adicionar na funcao bootstrap o metodo enableCors()
  - Para configurar basta passar um objt para a funcao com a propiedade de seguranca requirida
 
+7 - Protecao contra ataque de Brute Force (Rate Limiting)
+ - Para fazer o controlle de acessos e preciso instalar o pacote throttler npm i @nestjs/throttler
+ - Para utilizar o throttler e preciso importalo no appModule
+ - Para aplicar as configuracoes do throttler e preciso aplicar o guard ThrottlerGuard na rota ou controller que sera protegida
+ - Para aplicar em toda a api basta adicionar o provide APP_GUARD no app.module
+ - Para ignorar uma rota especifica basta adicionar o decorator @SkipThrottle()
+ - Para alterar uma regra de uma rota especifica basta utilizar o decorator @Throttle({'nomeDaConfgAppModule': {options}})

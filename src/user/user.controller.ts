@@ -19,9 +19,10 @@ import { Role } from '../enums/role.enum';
 import { Roles } from '../decorators/roles.decorator';
 import { RoleGuard } from '../guards/role.guard';
 import { AuthGuard } from '../guards/auth.guard';
+import { SkipThrottle, Throttle, ThrottlerGuard } from '@nestjs/throttler';
 
 @Roles(Role.Admin)
-@UseGuards(AuthGuard, RoleGuard)
+@UseGuards(ThrottlerGuard, AuthGuard, RoleGuard)
 @Controller("users")
 export class UserController {
   constructor(private readonly userService: UserService) {
@@ -32,11 +33,13 @@ export class UserController {
     return this.userService.create(data)
   }
 
+  @SkipThrottle()
   @Get()
   async readAll(){
     return this.userService.list();
   }
 
+  @Throttle({default: {limit: 5}})
   @Get(":id")
   async readOne(@ParamId() id: number){
     return this.userService.findById(id);
