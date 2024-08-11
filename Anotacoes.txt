@@ -138,3 +138,10 @@
 
 5 - Aplicando Criptografia na senha
  - Fazer a instalacao do pacote bcrypt e instalar o pacote dos types do bycript com o comando npm i -D @types/bcrypt
+
+6 - CORS (Cross-origin Resource Sharing)
+ - Valida se o acesso a api sera permitido ou nao quando o endereco de origem e diferente da api
+ - Ajuda a evitar consulta da api por sites fakes
+ - Basta adicionar na funcao bootstrap o metodo enableCors()
+ - Para configurar basta passar um objt para a funcao com a propiedade de seguranca requirida
+
