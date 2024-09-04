@@ -152,3 +152,16 @@
  - Para aplicar em toda a api basta adicionar o provide APP_GUARD no app.module
  - Para ignorar uma rota especifica basta adicionar o decorator @SkipThrottle()
  - Para alterar uma regra de uma rota especifica basta utilizar o decorator @Throttle({'nomeDaConfgAppModule': {options}})
+
+8 - Variaveis de Ambiente
+ - Para habilitar a leitura de arquivos .env pelo nestJs e preciso instalar o pacote @nestjs/config
+ - Para aplicar na api e preciso importar dentro do appModule o ConfigModule.forRoot()
+ - Para substituir os dados por vairiaveis do .env basta utilizar o process.env.VARIAVEL
+
+-------------------- Upload de Arquivo
+
+1 - Utilizando o Multer
+ - middleware para manipular o header multipart/form-data para manipular o upload de arquivos
+ - ja esta no nodejs porem e preciso importar os types da lib no ambiente de dev
+ - Para utilizar basta adicionar o interceptor @UseInterceptors(FileInterceptor('NOME DO ARQUIVO')) na rota de upload
+ - Para pegar os dados do formulario enviado pelo front basta adicionar como parametro da rota @UploadedFile() arquivo: Express.Multer.File

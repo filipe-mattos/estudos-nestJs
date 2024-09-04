@@ -3,9 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import {ThrottlerModule} from '@nestjs/throttler';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
-import { AuthGuard } from './guards/auth.guard';
 @Module({
   imports: [
     ThrottlerModule.forRoot([{
@@ -18,7 +17,7 @@ import { AuthGuard } from './guards/auth.guard';
   ],
   controllers: [AppController],
   providers: [AppService, {
-    provide: APP_GUARD, useClass: AuthGuard,
+    provide: APP_GUARD, useClass: ThrottlerGuard,
   }],
 })
 export class AppModule {}
